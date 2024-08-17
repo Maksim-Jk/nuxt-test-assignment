@@ -1,0 +1,30 @@
+// Define a map of color variables
+$colors: (
+        primary: #FFD700, // Gold color for primary elements
+        primary-hover: #d9b900, // Gold color for primary elements
+        background: #F3F5F8, // Light grey color for background
+        card-background: #FFFFFF, // White color for card backgrounds
+        text-primary: #06162E, // Dark blue color for primary text
+        text-secondary: #B4B9C0, // Light grey color for secondary text
+        accent-green: #36A420 // Green color for accents
+);
+
+// Define a map of border radius variables
+$radius: (
+        small: 8px, // Small border radius
+        medium: 12px, // Medium border radius
+);
+
+// Function to retrieve a color from the $colors map
+// @param {String} $color-name - The name of the color to retrieve
+// @return {Color} - The color value associated with the given name
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// Function to retrieve a radius from the $radius map
+// @param {String} $radius-name - The name of the radius to retrieve
+// @return {Length} - The radius value associated with the given name
+@function radius($radius-name) {
+  @return map-get($radius, $radius-name);
+}

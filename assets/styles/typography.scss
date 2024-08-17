@@ -1,0 +1,15 @@
+$font-path: '~/assets/fonts/';
+
+@font-face {
+  font-family: 'gothampro';
+  src: url('#{$font-path}gothampro.ttf') format('truetype'),
+  url('#{$font-path}gothampro.woff') format('woff'),
+  url('#{$font-path}gothampro.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'gothampro', 'Montserrat', sans-serif;
+}

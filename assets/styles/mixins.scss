@@ -1,0 +1,16 @@
+$breakpoints: (
+        'sm': 360px,
+        'md': 780px,
+        'xxl': 1400px,
+);
+
+@mixin respond-to-max($breakpoint) {
+  $max_width: map-get($breakpoints, $breakpoint);
+  @if $max_width {
+    @media screen and (max-width: $max_width) {
+      @content;
+    }
+  } @else {
+    @warn "Не найдена точка перелома с именем #{$breakpoint}.";
+  }
+}
