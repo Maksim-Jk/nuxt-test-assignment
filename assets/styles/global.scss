@@ -1,11 +1,11 @@
 body,
 html {
-  background: color(background);
+  background: $background;
   scrollbar-gutter: stable;
 }
 
 * {
-  color: color(text-primary);
+  color: $text-primary;
   scroll-margin-top: 20px;
 }
 
@@ -32,6 +32,6 @@ html {
 }
 
 *:focus-visible {
-  outline: 1px color(accent) solid !important;
+  outline: 1px $primary solid !important;
   outline-offset: 2px !important;
 }

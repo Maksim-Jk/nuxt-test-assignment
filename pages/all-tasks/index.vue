@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-  breadcrumb: 'Главная'
+  breadcrumb: 'Все задачи'
 })
 const router = useRouter()
 

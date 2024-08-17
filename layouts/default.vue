@@ -2,7 +2,7 @@
 
 <template>
   <div class="container">
-    <slot/>
+    <TheBreadcrumb />
   </div>
 </template>
 

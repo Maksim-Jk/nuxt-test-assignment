@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-
+definePageMeta({
+  breadcrumb: 'Профиль'
+})
 </script>
 
 <template>
