@@ -2,9 +2,9 @@ $font-path: '~/assets/fonts/';
 
 @font-face {
   font-family: 'gothampro';
-  src: url('#{$font-path}gothampro.ttf') format('truetype'),
+  src: url('#{$font-path}gothampro.woff2') format('woff2'),
   url('#{$font-path}gothampro.woff') format('woff'),
-  url('#{$font-path}gothampro.woff2') format('woff2');
+  url('#{$font-path}gothampro.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -12,9 +12,9 @@ $font-path: '~/assets/fonts/';
 
 @font-face {
   font-family: 'gothampro_medium';
-  src: url('#{$font-path}gothampro_medium.ttf') format('truetype'),
+  src: url('#{$font-path}gothampro_medium.woff2') format('woff2'),
   url('#{$font-path}gothampro_medium.woff') format('woff'),
-  url('#{$font-path}gothampro_medium.woff2') format('woff2');
+  url('#{$font-path}gothampro_medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -22,9 +22,9 @@ $font-path: '~/assets/fonts/';
 
 @font-face {
   font-family: 'gothampro_bold';
-  src: url('#{$font-path}gothampro_bold.ttf') format('truetype'),
+  src: url('#{$font-path}gothampro_bold.woff2') format('woff2'),
   url('#{$font-path}gothampro_bold.woff') format('woff'),
-  url('#{$font-path}gothampro_bold.woff2') format('woff2');
+  url('#{$font-path}gothampro_bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
