@@ -1,39 +1,26 @@
-<!-- FormInput.vue -->
-<template>
-  <component
-    :is="type"
-    v-model="modelValue"
-    :placeholder="placeholder"
-    :type="inputType"
-    :class="['input', { textarea: type === 'textarea' }]"
-  ></component>
-</template>
-
 <script lang="ts" setup>
-import { defineProps, defineEmits, ref, watch } from "vue";
+import { defineEmits, defineProps } from "vue";
 
-const props = defineProps<{
+defineProps<{
   modelValue: string;
   placeholder: string;
   type: "input" | "textarea";
   inputType?: string;
 }>();
 
-const emits = defineEmits(["update:modelValue"]);
-
-const modelValue = ref(props.modelValue);
-
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    modelValue.value = newValue;
-  },
-);
-
-watch(modelValue, (newValue) => {
-  emits("update:modelValue", newValue);
-});
+defineEmits(["update:modelValue"]);
 </script>
+
+<template>
+  <component
+    :is="type"
+    :class="['input', { textarea: type === 'textarea' }]"
+    :placeholder="placeholder"
+    :type="inputType"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  ></component>
+</template>
 
 <style lang="scss" scoped>
 .input {
