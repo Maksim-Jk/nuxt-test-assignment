@@ -9,6 +9,8 @@ interface IMetaInfo {
 export const useConfigSeo = (metaInfo: IMetaInfo) => {
   const { baseUrl, defaultLocale } = useRuntimeConfig().public;
 
+  //add canonical link
+
   useHead({
     title: metaInfo.title || "",
     meta: [
@@ -22,6 +24,12 @@ export const useConfigSeo = (metaInfo: IMetaInfo) => {
     htmlAttrs: {
       lang: defaultLocale,
     },
+    link: [
+      {
+        rel: "canonical",
+        href: baseUrl + metaInfo.href || "",
+      },
+    ],
   });
 
   useSeoMeta({
