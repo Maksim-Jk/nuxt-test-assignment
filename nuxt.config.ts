@@ -32,4 +32,8 @@ export default defineNuxtConfig({
       apiKey: process.env.API_KEY,
     },
   },
+  routeRules: {
+    '/': { redirect: '/all-tasks/profile' },
+    '/all-tasks':{ redirect: '/all-tasks/profile' },
+  },
 });
