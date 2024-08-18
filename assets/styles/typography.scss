@@ -11,32 +11,28 @@ $font-path: '~/assets/fonts/';
 }
 
 @font-face {
-  font-family: 'gothampro_bold';
-  src: url('#{$font-path}gothampro_bold.ttf') format('truetype'),
-  url('#{$font-path}gothampro_bold.woff') format('woff'),
-  url('#{$font-path}gothampro_bold.woff2') format('woff2');
-  font-weight: normal;
+  font-family: 'gothampro_medium';
+  src: url('#{$font-path}gothampro_medium.ttf') format('truetype'),
+  url('#{$font-path}gothampro_medium.woff') format('woff'),
+  url('#{$font-path}gothampro_medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'gothampro_medium';
-  src: url('#{$font-path}gothampro_medium.ttf') format('truetype'),
-  url('#{$font-path}gothampro_medium.woff') format('woff'),
-  url('#{$font-path}gothampro_medium.woff2') format('woff2');
-  font-weight: normal;
+  font-family: 'gothampro_bold';
+  src: url('#{$font-path}gothampro_bold.ttf') format('truetype'),
+  url('#{$font-path}gothampro_bold.woff') format('woff'),
+  url('#{$font-path}gothampro_bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-body {
-  font-family: 'gothampro', 'Montserrat', sans-serif;
-}
-
 @mixin font-gothampro-regular {
   font-family: 'gothampro', 'Montserrat', sans-serif;
-  font-weight: 400;
+  font-weight: normal;
 }
 
 @mixin font-gothampro-medium {
@@ -47,4 +43,8 @@ body {
 @mixin font-gothampro-bold {
   font-family: 'gothampro_bold', 'Montserrat', sans-serif;
   font-weight: 700;
+}
+
+body {
+  @include font-gothampro-regular
 }

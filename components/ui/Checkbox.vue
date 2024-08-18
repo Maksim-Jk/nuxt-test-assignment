@@ -48,7 +48,8 @@ const handleChange = (event: Event) => {
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     width: 18px;
     height: 18px;
@@ -81,7 +82,6 @@ const handleChange = (event: Event) => {
 
   .label-text {
     font-size: 12px;
-    font-weight: 400;
     line-height: 140%;
   }
 }

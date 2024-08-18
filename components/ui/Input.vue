@@ -37,11 +37,15 @@ watch(modelValue, (newValue) => {
 
 <style lang="scss" scoped>
 .input {
+  @include font-gothampro-medium;
   font-size: 16px;
-  font-weight: 500;
   line-height: 140%;
   padding: 8px 12px;
   border-radius: 4px;
+
+  &::placeholder {
+    color: $text-placeholder;
+  }
 }
 
 .textarea {

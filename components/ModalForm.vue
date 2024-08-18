@@ -30,7 +30,7 @@ const closeModal = () => {
   document.body.style.overflow = "";
 };
 const submitForm = () => {
-  emit("submit", { ...formValue.value, taskId: taskData.value?.id });
+  emit("submit", {...formValue.value, taskId: taskData.value?.id});
   closeModal();
   formValue.value = {
     comment: "",
@@ -50,13 +50,14 @@ const handleOverlayClick = (event: MouseEvent) => {
   }
 };
 
-defineExpose({ openModal });
+defineExpose({openModal});
 
 function beforeEnter(el: Element) {
   (el as HTMLElement).style.opacity = "0";
 }
 
 function enter(el: Element) {
+  void (el as HTMLElement).offsetHeight;
   (el as HTMLElement).style.transition = "opacity 0.3s ease";
   (el as HTMLElement).style.opacity = "1";
 }
@@ -69,51 +70,51 @@ function leave(el: Element) {
 
 <template>
   <transition
-    name="fade"
-    @enter="enter"
-    @leave="leave"
-    @before-enter="beforeEnter"
+      name="fade"
+      @enter="enter"
+      @leave="leave"
+      @before-enter="beforeEnter"
   >
     <div v-if="isOpen" class="modal" @click="handleOverlayClick">
       <div class="modal__inner">
         <div class="modal__header">
           <h2 class="modal__title">Информация по отклику</h2>
           <UiButton circle class="modal__close-button" icon @click="closeModal">
-            <SvgoCross class="modal__close-icon" />
+            <SvgoCross class="modal__close-icon"/>
           </UiButton>
         </div>
         <form class="modal__form" @submit.prevent="submitForm">
           <UiInput
-            v-model="formValue.comment"
-            placeholder="Комментарий"
-            type="textarea"
+              v-model="formValue.comment"
+              placeholder="Комментарий"
+              type="textarea"
           />
           <UiInput
-            v-model="formValue.phone"
-            input-type="tel"
-            placeholder="Телефон"
-            type="input"
+              v-model="formValue.phone"
+              input-type="tel"
+              placeholder="Телефон"
+              type="input"
           />
           <UiInput
-            v-model="formValue.email"
-            input-type="email"
-            placeholder="E-mail*"
-            type="input"
-            required
+              v-model="formValue.email"
+              input-type="email"
+              placeholder="E-mail*"
+              required
+              type="input"
           />
           <UiInput
-            v-model="formValue.telegram"
-            input-type="text"
-            placeholder="Телеграм*"
-            type="input"
-            required
+              v-model="formValue.telegram"
+              input-type="text"
+              placeholder="Телеграм*"
+              required
+              type="input"
           />
-          <UiCheckbox v-model="formValue.doNotCall"
-            >Прошу не звонить и написать мне в мессенджер</UiCheckbox
-          >
+          <UiCheckbox v-model="formValue.doNotCall" class="modal__checkbox"
+          >Прошу не звонить и написать мне в мессенджер
+          </UiCheckbox>
           <UiButton class="modal__button" type="submit" yellow
-            >Отправить</UiButton
-          >
+          >Отправить
+          </UiButton>
         </form>
       </div>
     </div>
@@ -155,8 +156,8 @@ function leave(el: Element) {
   }
 
   &__title {
+    @include font-gothampro-bold;
     font-size: 20px;
-    font-weight: 700;
     line-height: 120%;
   }
 
@@ -174,6 +175,10 @@ function leave(el: Element) {
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  &__checkbox {
+    margin-bottom: 8px;
   }
 
   &__button {

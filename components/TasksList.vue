@@ -48,8 +48,8 @@ const handleSubmit = (formData: FormState) => {
 
 <style lang="scss" scoped>
 .tasks-section__title {
+  @include font-gothampro-bold;
   font-size: 32px;
-  font-weight: 700;
   line-height: 120%;
   margin-bottom: 24px;
 }
