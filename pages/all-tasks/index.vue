@@ -1,10 +1,10 @@
 <script setup>
 definePageMeta({
-  breadcrumb: 'Все задачи'
-})
-const router = useRouter()
+  breadcrumb: "Все задачи",
+});
+const router = useRouter();
 
-router.push('/all-tasks/profile')
+router.push("/all-tasks/profile");
 </script>
 
 <template>

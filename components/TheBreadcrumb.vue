@@ -1,18 +1,32 @@
 <script lang="ts" setup>
-import {useBreadcrumb} from "~/combosables/useBreadcrumb";
+import { useBreadcrumb } from "~/combosables/useBreadcrumb";
 
-const {breadcrumbs} = useBreadcrumb()
-
+const { breadcrumbs } = useBreadcrumb();
 </script>
 
 <template>
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li v-for="(crumb, index) in breadcrumbs" :key="index" class="breadcrumb__item">
-        <NuxtLink :to="crumb.path">
-          {{ crumb.name }}
+    <ol
+      class="breadcrumb"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList"
+    >
+      <li
+        v-for="(crumb, index) in breadcrumbs"
+        :key="index"
+        class="breadcrumb__item"
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <NuxtLink :to="crumb.path" itemprop="item">
+          <span itemprop="name">{{ crumb.name }}</span>
         </NuxtLink>
-        <SvgoInterpunct v-if="index < breadcrumbs.length - 1" class="breadcrumb__separator"/>
+        <meta :content="(index + 1).toString()" itemprop="position" />
+        <SvgoInterpunct
+          v-if="index < breadcrumbs.length - 1"
+          class="breadcrumb__separator"
+        />
       </li>
     </ol>
   </nav>
@@ -23,6 +37,13 @@ const {breadcrumbs} = useBreadcrumb()
   display: flex;
   margin-bottom: 41px;
 
+  @include respond-to-max("md") {
+    margin-bottom: 24px;
+  }
+  @include respond-to-max("sm") {
+    margin-bottom: 16px;
+  }
+
   &__item {
     display: flex;
     align-items: center;
@@ -31,8 +52,8 @@ const {breadcrumbs} = useBreadcrumb()
     color: $text-secondary;
 
     & a {
-      font-weight: 400;
       font-size: 12px;
+      font-weight: 400;
       line-height: 120%;
     }
 

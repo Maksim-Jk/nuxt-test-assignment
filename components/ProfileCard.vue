@@ -1,47 +1,71 @@
 <script lang="ts" setup>
 interface Props {
-  data: Profile
+  profile: Profile;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
-  <div class="profile">
+  <div class="profile" itemscope itemtype="https://schema.org/Person">
     <div class="profile__avatar-wrapper">
       <NuxtImg
-          :placeholder="true" :src="data.avatar.url" alt="avatar" class="profile__avatar"
-          v-bind:modifiers="data.avatar"
-          :style="{ backgroundColor: data.avatar.placeholder_color }"
+        :placeholder="true"
+        :src="profile.avatar.url"
+        :style="{ backgroundColor: profile.avatar.placeholder_color }"
+        alt="avatar"
+        class="profile__avatar"
+        itemprop="image"
+        :modifiers="profile.avatar"
       />
     </div>
     <div class="profile__info">
-      <h2 class="profile__name">{{ data.name }}</h2>
+      <h2 class="profile__name" itemprop="name">{{ profile.name }}</h2>
       <p class="profile__username">
-        <SvgoUser class="profile__icon"/>
-        <span>{{ data.login }}</span>
+        <SvgoUser class="profile__icon" />
+        <span itemprop="alternateName">{{ profile.login }}</span>
       </p>
-      <hr class="profile__separator">
+      <hr class="profile__separator" />
       <div class="social__links">
         <NuxtLink
-            v-if="data.in_link" :href="data.in_link" class="social__link" rel="noopener noreferrer"
-            target="_blank">
-          <SvgoInstagram class="social__icon"/>
+          v-if="profile.in_link"
+          :href="profile.in_link"
+          class="social__link"
+          itemprop="sameAs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <SvgoInstagram class="social__icon" />
         </NuxtLink>
         <NuxtLink
-            v-if="data.vk_link" :href="data.vk_link" class="social__link" rel="noopener noreferrer"
-            target="_blank">
-          <SvgoVk class="social__icon"/>
+          v-if="profile.vk_link"
+          :href="profile.vk_link"
+          class="social__link"
+          itemprop="sameAs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <SvgoVk class="social__icon" />
         </NuxtLink>
         <NuxtLink
-            v-if="data.tw_link" :href="data.tw_link" class="social__link" rel="noopener noreferrer"
-            target="_blank">
-          <SvgoTwitter class="social__icon"/>
+          v-if="profile.tw_link"
+          :href="profile.tw_link"
+          class="social__link"
+          itemprop="sameAs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <SvgoTwitter class="social__icon" />
         </NuxtLink>
         <NuxtLink
-            v-if="data.fb_link" :href="data.fb_link" class="social__link" rel="noopener noreferrer"
-            target="_blank">
-          <SvgoFacebook class="social__icon"/>
+          v-if="profile.fb_link"
+          :href="profile.fb_link"
+          class="social__link"
+          itemprop="sameAs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <SvgoFacebook class="social__icon" />
         </NuxtLink>
       </div>
     </div>
@@ -54,18 +78,19 @@ defineProps<Props>()
   flex-direction: column;
   flex-wrap: wrap;
   max-width: 320px;
+  height: fit-content;
   padding: 20px 20px 24px;
   border-radius: $radius-medium;
   background-color: $card-background;
   gap: 24px;
 
-  @include respond-to-max('md') {
+  @include respond-to-max("md") {
     flex-direction: row;
     max-width: 100%;
     gap: 32px;
   }
 
-  @include respond-to-max('sm') {
+  @include respond-to-max("sm") {
     flex-direction: column;
   }
 
@@ -75,7 +100,7 @@ defineProps<Props>()
     flex-direction: column;
     gap: 24px;
 
-    @include respond-to-max('md') {
+    @include respond-to-max("md") {
       gap: 12px;
     }
   }
@@ -93,7 +118,7 @@ defineProps<Props>()
     height: 280px;
     border-radius: $radius-medium;
 
-    @include respond-to-max('md') {
+    @include respond-to-max("md") {
       width: 104px;
       height: 104px;
     }
@@ -130,7 +155,6 @@ defineProps<Props>()
   }
 
   .social {
-
     &__links {
       display: flex;
       gap: 12px;
@@ -145,8 +169,6 @@ defineProps<Props>()
         opacity: 0.7;
       }
     }
-
   }
 }
-
 </style>

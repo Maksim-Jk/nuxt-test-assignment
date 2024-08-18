@@ -1,36 +1,42 @@
-import {computed} from 'vue'
-import {useRoute, useRouter} from 'vue-router'
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 interface Breadcrumb {
-    name: string;
-    path: string;
+  name: string;
+  path: string;
 }
 
 export function useBreadcrumb() {
-    const route = useRoute()
-    const router = useRouter()
+  const route = useRoute();
+  const router = useRouter();
 
-    const breadcrumbs = computed<Breadcrumb[]>(() => {
-        const crumbs: Breadcrumb[] = []
-        let path = ''
+  const breadcrumbs = computed(() => {
+    const crumbs: Breadcrumb[] = [];
+    const pathSegments = route.path.split("/").filter(Boolean);
 
-        route.path.split('/')
-            .filter(Boolean)
-            .forEach((crumb) => {
-                path += `/${crumb}`
-                const matchedRoute = router.getRoutes().find((r) => r.path === path)
+    let fullPath = "";
+    pathSegments.forEach((segment) => {
+      fullPath += `/${segment}`;
 
-                if (matchedRoute && matchedRoute.meta.breadcrumb) {
-                    const name = typeof matchedRoute.meta.breadcrumb === 'function'
-                        ? matchedRoute.meta.breadcrumb(route)
-                        : matchedRoute.meta.breadcrumb as string
+      const matchedRoute = router.getRoutes().find((r) => {
+        const routeRegex = new RegExp(
+          "^" + r.path.replace(/:([^/]+)/g, "([^/]+)") + "$",
+        );
+        return routeRegex.test(fullPath);
+      });
 
-                    crumbs.push({name, path})
-                }
-            })
+      if (matchedRoute && matchedRoute.meta.breadcrumb) {
+        const name =
+          typeof matchedRoute.meta.breadcrumb === "function"
+            ? matchedRoute.meta.breadcrumb(route)
+            : (matchedRoute.meta.breadcrumb as string);
 
-        return crumbs
-    })
+        crumbs.push({ name, path: fullPath });
+      }
+    });
 
-    return {breadcrumbs}
+    return crumbs;
+  });
+
+  return { breadcrumbs };
 }
