@@ -21,6 +21,7 @@ const {breadcrumbs} = useBreadcrumb()
 <style lang="scss" scoped>
 .breadcrumb {
   display: flex;
+  margin-bottom: 41px;
 
   &__item {
     display: flex;
@@ -37,6 +38,7 @@ const {breadcrumbs} = useBreadcrumb()
 
     &:hover a {
       text-decoration: underline;
+      text-underline-offset: 2px;
     }
   }
 

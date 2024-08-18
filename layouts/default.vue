@@ -3,6 +3,7 @@
 <template>
   <div class="container">
     <TheBreadcrumb />
+    <slot/>
   </div>
 </template>
 

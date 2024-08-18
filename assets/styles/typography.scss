@@ -10,6 +10,41 @@ $font-path: '~/assets/fonts/';
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'gothampro_bold';
+  src: url('#{$font-path}gothampro_bold.ttf') format('truetype'),
+  url('#{$font-path}gothampro_bold.woff') format('woff'),
+  url('#{$font-path}gothampro_bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'gothampro_medium';
+  src: url('#{$font-path}gothampro_medium.ttf') format('truetype'),
+  url('#{$font-path}gothampro_medium.woff') format('woff'),
+  url('#{$font-path}gothampro_medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: 'gothampro', 'Montserrat', sans-serif;
+}
+
+@mixin font-gothampro-regular {
+  font-family: 'gothampro', 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+@mixin font-gothampro-medium {
+  font-family: 'gothampro_medium', 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+@mixin font-gothampro-bold {
+  font-family: 'gothampro_bold', 'Montserrat', sans-serif;
+  font-weight: 700;
 }
