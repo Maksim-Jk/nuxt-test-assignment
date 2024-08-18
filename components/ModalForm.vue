@@ -57,6 +57,7 @@ function beforeEnter(el: Element) {
 }
 
 function enter(el: Element) {
+  void (el as HTMLElement).offsetHeight;
   (el as HTMLElement).style.transition = "opacity 0.3s ease";
   (el as HTMLElement).style.opacity = "1";
 }
@@ -98,22 +99,22 @@ function leave(el: Element) {
             v-model="formValue.email"
             input-type="email"
             placeholder="E-mail*"
-            type="input"
             required
+            type="input"
           />
           <UiInput
             v-model="formValue.telegram"
             input-type="text"
             placeholder="Телеграм*"
-            type="input"
             required
+            type="input"
           />
           <UiCheckbox v-model="formValue.doNotCall"
-            >Прошу не звонить и написать мне в мессенджер</UiCheckbox
-          >
+            >Прошу не звонить и написать мне в мессенджер
+          </UiCheckbox>
           <UiButton class="modal__button" type="submit" yellow
-            >Отправить</UiButton
-          >
+            >Отправить
+          </UiButton>
         </form>
       </div>
     </div>
