@@ -10,13 +10,13 @@ defineProps<Props>();
   <div class="profile" itemscope itemtype="https://schema.org/Person">
     <div class="profile__avatar-wrapper">
       <NuxtImg
+        :modifiers="profile.avatar"
         :placeholder="true"
         :src="profile.avatar.url"
         :style="{ backgroundColor: profile.avatar.placeholder_color }"
         alt="avatar"
         class="profile__avatar"
         itemprop="image"
-        :modifiers="profile.avatar"
       />
     </div>
     <div class="profile__info">
@@ -30,6 +30,7 @@ defineProps<Props>();
         <NuxtLink
           v-if="profile.in_link"
           :href="profile.in_link"
+          aria-label="Instagram"
           class="social__link"
           itemprop="sameAs"
           rel="noopener noreferrer"
@@ -40,6 +41,7 @@ defineProps<Props>();
         <NuxtLink
           v-if="profile.vk_link"
           :href="profile.vk_link"
+          aria-label="VK"
           class="social__link"
           itemprop="sameAs"
           rel="noopener noreferrer"
@@ -50,6 +52,7 @@ defineProps<Props>();
         <NuxtLink
           v-if="profile.tw_link"
           :href="profile.tw_link"
+          aria-label="Twitter"
           class="social__link"
           itemprop="sameAs"
           rel="noopener noreferrer"
@@ -60,6 +63,7 @@ defineProps<Props>();
         <NuxtLink
           v-if="profile.fb_link"
           :href="profile.fb_link"
+          aria-label="Facebook"
           class="social__link"
           itemprop="sameAs"
           rel="noopener noreferrer"

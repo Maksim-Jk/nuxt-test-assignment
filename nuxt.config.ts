@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { redirect: '/all-tasks/profile' },
-    '/all-tasks':{ redirect: '/all-tasks/profile' },
+    "/": { redirect: "/all-tasks/profile" },
+    "/all-tasks": { redirect: "/all-tasks/profile" },
   },
 });

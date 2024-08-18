@@ -22,7 +22,10 @@ const route = useRoute();
 
 const metaInfo = {
   title: data?.value?.response.page.seo.title,
-  description: data?.value?.response.page.seo.text,
+  description:
+    data?.value?.response?.page?.seo?.text?.length === 0
+      ? data?.value?.response.page.seo.title
+      : data?.value?.response.page.seo.text,
   image: data?.value?.response.data.profile.avatar.url,
   href: route.path,
   noindex: data?.value?.response.page.noindex,
