@@ -7,7 +7,12 @@ const route = useRoute();
 </script>
 
 <template>
-  <p>Page of task {{ route.params.slug }}</p>
+  <h1 class="title">Страница задачи {{ route.params.slug }}</h1>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.title {
+  @include font-gothampro-bold;
+  font-size: 24px;
+}
+</style>

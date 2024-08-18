@@ -28,8 +28,8 @@ defineEmits<{
 
 <style lang="scss" scoped>
 .custom-button {
+  @include font-gothampro-bold;
   font-size: 16px;
-  font-weight: 700;
   line-height: 140%;
   padding: 13px 24px;
   cursor: pointer;

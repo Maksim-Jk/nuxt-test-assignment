@@ -156,8 +156,8 @@ function leave(el: Element) {
   }
 
   &__title {
+    @include font-gothampro-bold;
     font-size: 20px;
-    font-weight: 700;
     line-height: 120%;
   }
 

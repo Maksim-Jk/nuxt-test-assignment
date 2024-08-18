@@ -16,15 +16,16 @@ const handleClick = () => {
     <article>
       <header class="task-card__header">
         <span class="task-card__category" itemprop="taskCategory">{{
-          task.category_name
-        }}</span>
+            task.category_name
+          }}</span>
       </header>
       <div class="task-card__body">
         <h2 class="task-card__title" itemprop="name">
           <NuxtLink
-            :href="'/all-tasks/profile/task/' + task.url"
-            itemprop="url"
-            >{{ task.name }}</NuxtLink
+              :href="'/all-tasks/profile/task/' + task.url"
+              itemprop="url"
+          >{{ task.name }}
+          </NuxtLink
           >
         </h2>
         <p class="task-card__description" itemprop="description">
@@ -34,19 +35,20 @@ const handleClick = () => {
       <footer class="task-card__footer">
         <div class="task-card__meta">
           <span class="task-card__price" itemprop="price">{{
-            task.price_format
-          }}</span>
-          <meta :content="task.currency" itemprop="priceCurrency" />
+              task.price_format
+            }}</span>
+          <meta :content="task.currency" itemprop="priceCurrency"/>
           <span class="task-card__deadline" itemprop="completionDate">{{
-            task.dedline
-          }}</span>
+              task.dedline
+            }}</span>
           <meta
-            :content="new Date(task.publish_date * 1000).toISOString()"
-            itemprop="datePublished"
+              :content="new Date(task.publish_date * 1000).toISOString()"
+              itemprop="datePublished"
           />
         </div>
         <UiButton class="task-card__button" yellow @click="handleClick"
-          >Взять задачу</UiButton
+        >Взять задачу
+        </UiButton
         >
       </footer>
     </article>
@@ -65,7 +67,7 @@ const handleClick = () => {
 
   &__title {
     font-size: 24px;
-    font-weight: 700;
+    @include font-gothampro-bold;
     line-height: 120%;
     margin-bottom: 12px;
 
@@ -76,14 +78,12 @@ const handleClick = () => {
 
   &__category {
     font-size: 14px;
-    font-weight: 400;
     line-height: 120%;
     color: $accent-green;
   }
 
   &__description {
     font-size: 16px;
-    font-weight: 400;
     line-height: 140%;
 
     @include respond-to-max("sm") {
@@ -120,8 +120,8 @@ const handleClick = () => {
 
   &__price,
   &__deadline {
+    @include font-gothampro-bold;
     font-size: 20px;
-    font-weight: 700;
     line-height: 120%;
     letter-spacing: -0.02em;
 
