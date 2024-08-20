@@ -11,7 +11,7 @@ defineProps<Props>();
     <div class="profile__avatar-wrapper">
       <NuxtImg
         :modifiers="profile.avatar"
-        :placeholder="true"
+        :placeholder="profile.avatar.preview"
         :src="profile.avatar.url"
         :style="{ backgroundColor: profile.avatar.placeholder_color }"
         alt="avatar"
@@ -22,7 +22,7 @@ defineProps<Props>();
     <div class="profile__info">
       <h2 class="profile__name" itemprop="name">{{ profile.name }}</h2>
       <p class="profile__username">
-        <SvgoUser class="profile__icon" />
+        <IUser class="profile__icon" />
         <span itemprop="alternateName">{{ profile.login }}</span>
       </p>
       <hr class="profile__separator" />
@@ -36,7 +36,7 @@ defineProps<Props>();
           rel="noopener noreferrer"
           target="_blank"
         >
-          <SvgoInstagram class="social__icon" />
+          <IInstagram class="social__icon" />
         </NuxtLink>
         <NuxtLink
           v-if="profile.vk_link"
@@ -47,7 +47,7 @@ defineProps<Props>();
           rel="noopener noreferrer"
           target="_blank"
         >
-          <SvgoVk class="social__icon" />
+          <IVk class="social__icon" />
         </NuxtLink>
         <NuxtLink
           v-if="profile.tw_link"
@@ -58,7 +58,7 @@ defineProps<Props>();
           rel="noopener noreferrer"
           target="_blank"
         >
-          <SvgoTwitter class="social__icon" />
+          <ITwitter class="social__icon" />
         </NuxtLink>
         <NuxtLink
           v-if="profile.fb_link"
@@ -69,7 +69,7 @@ defineProps<Props>();
           rel="noopener noreferrer"
           target="_blank"
         >
-          <SvgoFacebook class="social__icon" />
+          <IFacebook class="social__icon" />
         </NuxtLink>
       </div>
     </div>

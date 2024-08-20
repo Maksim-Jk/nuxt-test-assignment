@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "nuxt-svgo", "@nuxt/image"],
   svgo: {
     defaultImport: "component",
+    componentPrefix: "I",
   },
   vite: {
     css: {
@@ -12,15 +13,6 @@ export default defineNuxtConfig({
         scss: {
           additionalData: '@import "~/assets/styles/index.scss";',
         },
-      },
-    },
-  },
-  image: {
-    provider: "server-images",
-    providers: {
-      server_images: {
-        name: "server-images",
-        provider: "~/providers/server-images.ts",
       },
     },
   },
