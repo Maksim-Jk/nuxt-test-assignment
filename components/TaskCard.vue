@@ -12,17 +12,23 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="task-card" itemscope itemtype="http://schema.org/Task">
+  <div class="task-card" itemscope itemtype="https://schema.org/JobPosting">
+    <meta :content="task.id.toString()" itemprop="identifier" />
+    <meta :content="task.user_login" itemprop="hiringOrganization" />
+    <meta :content="task.dedline" itemprop="validThrough" />
     <article>
       <header class="task-card__header">
-        <span class="task-card__category" itemprop="taskCategory">{{
-          task.category_name
-        }}</span>
+        <span class="task-card__category" itemprop="occupationalCategory">
+          {{ task.category_name }}
+        </span>
       </header>
       <div class="task-card__body">
-        <h2 class="task-card__title" itemprop="name">
-          <NuxtLink :href="'/all-tasks/profile/task/' + task.url" itemprop="url"
-            >{{ task.name }}
+        <h2 class="task-card__title" itemprop="title">
+          <NuxtLink
+              :href="'/all-tasks/profile/task/' + task.url"
+              itemprop="url"
+          >
+            {{ task.name }}
           </NuxtLink>
         </h2>
         <p class="task-card__description" itemprop="description">
@@ -31,20 +37,16 @@ const handleClick = () => {
       </div>
       <footer class="task-card__footer">
         <div class="task-card__meta">
-          <span class="task-card__price" itemprop="price">{{
-            task.price_format
-          }}</span>
-          <meta :content="task.currency" itemprop="priceCurrency" />
-          <span class="task-card__deadline" itemprop="completionDate">{{
-            task.dedline
-          }}</span>
-          <meta
-            :content="new Date(task.publish_date * 1000).toISOString()"
-            itemprop="datePublished"
-          />
+          <span class="task-card__price" itemprop="baseSalary">
+            {{ task.price_format }}
+          </span>
+          <meta :content="task.currency" itemprop="currency" />
+          <span class="task-card__deadline" itemprop="datePosted">
+            {{ task.publish_date_format }}
+          </span>
         </div>
-        <UiButton class="task-card__button" yellow @click="handleClick"
-          >Взять задачу
+        <UiButton class="task-card__button" yellow @click="handleClick">
+          Взять задачу
         </UiButton>
       </footer>
     </article>
