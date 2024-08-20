@@ -12,17 +12,22 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="task-card" itemscope itemtype="http://schema.org/Task">
+  <div class="task-card" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta :content="task.id.toString()" itemprop="identifier" />
+    <meta :content="task.user_login" itemprop="creator" />
     <article>
       <header class="task-card__header">
-        <span class="task-card__category" itemprop="taskCategory">{{
-          task.category_name
-        }}</span>
+        <span class="task-card__category" itemprop="about">
+          {{ task.category_name }}
+        </span>
       </header>
       <div class="task-card__body">
         <h2 class="task-card__title" itemprop="name">
-          <NuxtLink :href="'/all-tasks/profile/task/' + task.url" itemprop="url"
-            >{{ task.name }}
+          <NuxtLink
+            :href="'/all-tasks/profile/task/' + task.url"
+            itemprop="url"
+          >
+            {{ task.name }}
           </NuxtLink>
         </h2>
         <p class="task-card__description" itemprop="description">
@@ -31,20 +36,20 @@ const handleClick = () => {
       </div>
       <footer class="task-card__footer">
         <div class="task-card__meta">
-          <span class="task-card__price" itemprop="price">{{
-            task.price_format
-          }}</span>
+          <span class="task-card__price" itemprop="price">
+            {{ task.price_format }}
+          </span>
           <meta :content="task.currency" itemprop="priceCurrency" />
-          <span class="task-card__deadline" itemprop="completionDate">{{
-            task.dedline
-          }}</span>
+          <span class="task-card__deadline" itemprop="deadline">
+            {{ task.dedline }}
+          </span>
           <meta
             :content="new Date(task.publish_date * 1000).toISOString()"
             itemprop="datePublished"
           />
         </div>
-        <UiButton class="task-card__button" yellow @click="handleClick"
-          >Взять задачу
+        <UiButton class="task-card__button" yellow @click="handleClick">
+          Взять задачу
         </UiButton>
       </footer>
     </article>
