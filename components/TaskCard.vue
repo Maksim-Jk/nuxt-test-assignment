@@ -12,20 +12,21 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="task-card" itemscope itemtype="http://schema.org/CreativeWork">
+  <div class="task-card" itemscope itemtype="https://schema.org/JobPosting">
     <meta :content="task.id.toString()" itemprop="identifier" />
-    <meta :content="task.user_login" itemprop="creator" />
+    <meta :content="task.user_login" itemprop="hiringOrganization" />
+    <meta :content="task.dedline" itemprop="validThrough" />
     <article>
       <header class="task-card__header">
-        <span class="task-card__category" itemprop="about">
+        <span class="task-card__category" itemprop="occupationalCategory">
           {{ task.category_name }}
         </span>
       </header>
       <div class="task-card__body">
-        <h2 class="task-card__title" itemprop="name">
+        <h2 class="task-card__title" itemprop="title">
           <NuxtLink
-            :href="'/all-tasks/profile/task/' + task.url"
-            itemprop="url"
+              :href="'/all-tasks/profile/task/' + task.url"
+              itemprop="url"
           >
             {{ task.name }}
           </NuxtLink>
@@ -36,17 +37,13 @@ const handleClick = () => {
       </div>
       <footer class="task-card__footer">
         <div class="task-card__meta">
-          <span class="task-card__price" itemprop="price">
+          <span class="task-card__price" itemprop="baseSalary">
             {{ task.price_format }}
           </span>
-          <meta :content="task.currency" itemprop="priceCurrency" />
-          <span class="task-card__deadline" itemprop="deadline">
-            {{ task.dedline }}
+          <meta :content="task.currency" itemprop="currency" />
+          <span class="task-card__deadline" itemprop="datePosted">
+            {{ task.publish_date_format }}
           </span>
-          <meta
-            :content="new Date(task.publish_date * 1000).toISOString()"
-            itemprop="datePublished"
-          />
         </div>
         <UiButton class="task-card__button" yellow @click="handleClick">
           Взять задачу
